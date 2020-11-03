@@ -29,5 +29,14 @@ namespace sysOnlineCart.Models
         {
             return new ApplicationDbContext();
         }
+        public DbSet<ProductCatergory> ProductCatergorys { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<OnlineCart> OnlineCarts { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<ProductDespatch> ProductDespatch { get; set; }
+
+        public System.Data.Entity.DbSet<sysOnlineCart.Models.RegisterClientViewModel> RegisterClientViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<sysOnlineCart.Models.ProductViewModel> ProductViewModels { get; set; }
     }
 }

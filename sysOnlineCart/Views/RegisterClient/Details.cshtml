@@ -1,0 +1,42 @@
+﻿@model sysOnlineCart.Models.Client
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RegisterClientViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.clientId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.clientName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.clientName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

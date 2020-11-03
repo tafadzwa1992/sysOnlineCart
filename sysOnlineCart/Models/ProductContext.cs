@@ -1,59 +1,72 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
 namespace sysOnlineCart.Models
 {
-    public class ProductContext
+    public class Client
     {
-    }
-
-
-    public class Clients
-    {
+        [Key]
+        public int Id { get; set; }
         public string clientId { get; set; }
         public string clientName { get; set; }
         public string phone { get; set; }
-        public string email { get; set; }
+       // public string email { get; set; }
     }
 
-    public class Products
+    public class Product
     {
+        [Key]
         public int productId { get; set; }
         public string productName { get; set; }
+        [DataType(DataType.Date)]
         public DateTime manufacturingDate { get; set; }
+        [DataType(DataType.Date)]
         public DateTime expiryDate { get; set; }
-        public Byte[] productImage { get; set; }
+        [Display(Name = "Choose Image to upload")]
+        public string ImageUrl { get; set; }
         public ProductCatergory catergory { get; set; }
         public string productDescription { get; set; }
         public float promotionPrice { get; set; }
         public float productPrice { get; set; }
         public int productQuantity { get; set; }
+        public ICollection<ProductGallery> prodcutImages { get; set; }
+
     }
 
+    public class ProductGallery
+    {
+        public int id { get; set; }
+        public Product prduct { get; set; }
+        public string[] GalleryImageUrl { get; set; }
+    }
 
     public class ProductCatergory
     {
+        [Key]
         public int CatId { get; set; }
         public string CatergoryName {get;set;}
-}
+    }
 
-public class OnlineCart
-{
-    public int orderNumber { get; set; }
-    public Clients clientId { get; set; }
-    public DateTime orderDate { get; set; }
-    public Products productId { get; set; }
+    public class OnlineCart
+         {
+               [Key]
+             public string orderNumber { get; set; }
+             public Client clientId { get; set; }
+             public DateTime orderDate { get; set; }
+            public ICollection<Product> productId { get; set; }
    // public string orderNumber { get; set; }
-    public int Quantity { get; set; }
-    public float totalPrice { get; set; }
-}
+            public int Quantity { get; set; }
+            public float totalPrice { get; set; }
+        }
 
-public class ProductDespatch
-{
-    public int despatchId { get; set; }
-    public OnlineCart oerderdesNumber { get; set; }
-}
+    public class ProductDespatch
+        {
+        [Key]
+        public int despatchId { get; set; }
+        public OnlineCart oerderdesNumber { get; set; }
+        }
 
 }
