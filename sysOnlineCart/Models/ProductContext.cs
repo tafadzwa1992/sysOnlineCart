@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -27,20 +28,25 @@ namespace sysOnlineCart.Models
         public DateTime expiryDate { get; set; }
         [Display(Name = "Choose Image to upload")]
         public string ImageUrl { get; set; }
-        public ProductCatergory catergory { get; set; }
+       // public ProductCatergory catergory { get; set; }
         public string productDescription { get; set; }
         public float promotionPrice { get; set; }
         public float productPrice { get; set; }
         public int productQuantity { get; set; }
-        public ICollection<ProductGallery> prodcutImages { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase FileContent { get; set; }
+        public virtual List<ProductGallery> prodcutImages { get; set; }
 
     }
 
     public class ProductGallery
     {
         public int id { get; set; }
-        public Product prduct { get; set; }
-        public string[] GalleryImageUrl { get; set; }
+        public Product productId { get; set; }
+        [NotMapped]
+        public HttpPostedFileBase FileContents { get; set; }
+
+        public string GalleryImageUrl { get; set; }
     }
 
     public class ProductCatergory
@@ -48,8 +54,20 @@ namespace sysOnlineCart.Models
         [Key]
         public int CatId { get; set; }
         public string CatergoryName {get;set;}
+        public int prodcutId { get; set; }
     }
 
+    public class Cart
+    {
+        public Product Product { get; set; }
+        public int Quantity { get; set; }
+
+        public Cart(Product product, int quantity)
+        {
+            Product = product;
+            Quantity = quantity;
+        }
+    }
     public class OnlineCart
          {
                [Key]

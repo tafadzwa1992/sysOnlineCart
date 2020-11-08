@@ -34,6 +34,8 @@ namespace sysOnlineCart.Models
         public DbSet<OnlineCart> OnlineCarts { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<ProductDespatch> ProductDespatch { get; set; }
+        public DbSet<ProductGallery> productgallery { get; set; }
+        public DbSet<Cart> Carts { get; set; }
 
         public System.Data.Entity.DbSet<sysOnlineCart.Models.RegisterClientViewModel> RegisterClientViewModels { get; set; }
 

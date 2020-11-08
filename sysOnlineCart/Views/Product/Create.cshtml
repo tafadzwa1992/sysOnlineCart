@@ -1,4 +1,4 @@
-﻿@model sysOnlineCart.Models.Product
+﻿@model sysOnlineCart.Models.ProductViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -7,7 +7,7 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -44,7 +44,8 @@
                 </div>
 
             <br/>
-                <input type="file" name="files" multiple />
+                <input type="file" name="file" multiple="multiple" />
+
             </div>
             <div class="col-md-8">
                 <div class="form-group">

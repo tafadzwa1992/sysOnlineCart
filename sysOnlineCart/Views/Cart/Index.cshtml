@@ -1,0 +1,41 @@
+﻿@using sysOnlineCart.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table border="1">
+   <tr>
+       <th>
+           Product Name
+       </th>
+       <th>
+           Product Quantity
+       </th>
+       <th>
+           Price
+       </th>
+       <th>
+           Sub Total
+       </th>
+   </tr>
+    @foreach(var cart in (List<Cart>)Session["Cart"])
+    { 
+        <tr>
+            <td>
+                @cart.Product.productName
+            </td>
+            <td>
+                @cart.Quantity
+            </td>
+            <td>
+                @cart.Product.productPrice
+            </td>
+            <td>
+                @(String.Format("{0:NO}", cart.Product.productPrice * cart.Quantity))
+            </td>
+        </tr>
+    }
+</table>
+<h2>Index</h2>
+

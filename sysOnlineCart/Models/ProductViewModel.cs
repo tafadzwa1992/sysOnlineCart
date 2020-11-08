@@ -13,16 +13,25 @@ namespace sysOnlineCart.Models
         [Key]
         public int productId { get; set; }
         public string productName { get; set; }
+        [DataType(DataType.Date)]
         public DateTime manufacturingDate { get; set; }
+        [DataType(DataType.Date)]
         public DateTime expiryDate { get; set; }
-        //[NotMapped]
-        //public HttpPostedFileBase FileContent { get; set; }
+
+        [NotMapped]
+        public HttpPostedFileBase FileContent { get; set; } 
+        [Display(Name = "Choose Image to upload")]
         public string ImageUrl { get; set; }
-        public ProductCatergory catergory { get; set; }
+
+        public string CatergoryName { get; set; }
+
         public string productDescription { get; set; }
         public float promotionPrice { get; set; }
         public float productPrice { get; set; }
         public int productQuantity { get; set; }
+
+        //public string GalleryImageUrl { get; set; }
+        //public virtual List<ProductGallery> prodcutImages { get; set; }
     }
 }
  
